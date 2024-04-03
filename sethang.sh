@@ -9,37 +9,29 @@ set -o errexit
 set -o pipefail
 
 # Set value in $2 for Mode/Network
-
-if [ -z "$1" ]; then
+if [ -z "$10" ]; then
         exit
-        else
-        if [ "$1" = 1 ]; then sudo sed -i '/\[D-Star\]/!b;n;n;n;n;n;n;n;n;cModeHang='"$2"'' /etc/mmdvmhost
-        fi
+ else
+sudo mount -o remount,rw /
+sudo /usr/local/sbin/mmdvmhost.service stop  > /dev/null
 
-        if [ "$1" = 2 ]; then sudo sed -i '/\[D-Star Network\]/!b;n;n;n;n;n;n;cModeHang='"$2"'' /etc/mmdvmhost
-        fi
 
-        if [ "$1" = 3 ]; then sudo sed -i '/\[DMR\]/!b;n;n;n;n;n;n;n;n;n;n;n;cModeHang='"$2"'' /etc/mmdvmhost
-        fi
+p10=${10}
+	sudo sed -i '/^\[/h;G;/D-Star/s/\(ModeHang=\).*/\1'"$1"'/m;P;d' /etc/mmdvmhost
+	sudo sed -i '/^\[/h;G;/D-Star Network/s/\(ModeHang=\).*/\1'"$2"'/m;P;d' /etc/mmdvmhost
 
-        if [ "$1" = 4 ]; then sudo sed -i '/\[DMR Network\]/!b;n;n;n;n;n;n;n;n;n;cModeHang='"$2"'' /etc/mmdvmhost
-        fi
+	sudo sed -i '/^\[/h;G;/DMR/s/\(ModeHang=\).*/\1'"$3"'/m;P;d' /etc/mmdvmhost
+	sudo sed -i '/^\[/h;G;/DMR Network/s/\(ModeHang=\).*/\1'"$4"'/m;P;d' /etc/mmdvmhost
 
-        if [ "$1" = 5 ]; then sudo sed -i '/\[System Fusion\]/!b;n;n;n;n;n;n;cModeHang='"$2"'' /etc/mmdvmhost
-        fi
+	sudo sed -i '/^\[/h;G;/System Fusion/s/\(ModeHang=\).*/\1'"$5"'/m;P;d' /etc/mmdvmhost
+	sudo sed -i '/^\[/h;G;/System Fusion Network/s/\(ModeHang=\).*/\1'"$6"'/m;P;d' /etc/mmdvmhost
 
-        if [ "$1" = 6 ]; then sudo sed -i '/\[System Fusion Network\]/!b;n;n;n;n;n;n;n;cModeHang='"$2"'' /etc/mmdvmhost
-        fi
+	sudo sed -i '/^\[/h;G;/P25/s/\(ModeHang=\).*/\1'"$7"'/m;P;d' /etc/mmdvmhost
+	sudo sed -i '/^\[/h;G;/P25 Network/s/\(ModeHang=\).*/\1'"$8"'/m;P;d' /etc/mmdvmhost
 
-        if [ "$1" = 7 ]; then sudo sed -i '/\[P25\]/!b;n;n;n;n;n;n;cModeHang='"$2"'' /etc/mmdvmhost
-        fi
-
-        if [ "$1" = 8 ]; then sudo sed -i '/\[P25 Network\]/!b;n;n;n;n;n;n;cModeHang='"$2"'' /etc/mmdvmhost
-        fi
-
-        if [ "$1" = 9 ]; then sudo sed -i '/\[NXDN\]/!b;n;n;n;n;n;n;cModeHang='"$2"'' /etc/mmdvmhost
-        fi
-
-        if [ "$1" = 10 ]; then sudo sed -i '/\[NXDN Network\]/!b;n;n;n;n;n;n;n;cModeHang='"$2"'' /etc/mmdvmhost
-        fi
+	sudo sed -i '/^\[/h;G;/NXDN/s/\(ModeHang=\).*/\1'"$9"'/m;P;d' /etc/mmdvmhost
+	sudo sed -i '/^\[/h;G;/NXDN Network/s/\(ModeHang=\).*/\1'"$p10"'/m;P;d' /etc/mmdvmhost
+echo "$p10"
 fi;
+sudo /usr/local/sbin/mmdvmhost.service start  > /dev/null
+sudo mount -o remount,rw /

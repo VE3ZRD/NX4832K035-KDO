@@ -23,6 +23,7 @@ sudo mount -o remount,rw /
 	sudo sed -i '/\[System Fusion Network\]/!b;n;cEnable='"0"'' /etc/mmdvmhost
 	sudo sed -i '/\[YSF Network\]/!b;n;cEnable='"0"'' /etc/ysfgateway
 	sudo sed -i '/\[FCS Network\]/!b;n;cEnable='"0"'' /etc/ysfgateway
+	sudo sed -i '/\[DMR Network 3\]/!b;n;cEnabled='"0"'' /etc/dmrgateway
 
 
 
