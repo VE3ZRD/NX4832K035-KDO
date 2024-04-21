@@ -10,5 +10,4 @@
 set -o errexit
 set -o pipefail
 
-sudo cat /etc/mmdvmhost | grep "\[Info\]" -A 7 | grep "Location=" | cut -b 10-30
-
+sed -n '/^[ \t]*\[Info\]/,/\[/s/^[ \t]*Location[ \t]*=[ \t]*//p' /etc/mmdvmhost

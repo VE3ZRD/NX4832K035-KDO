@@ -75,8 +75,5 @@ echo "$City|$State|$Country"
 "3567")
 echo "$Name1|$City|$State|$Country"
 ;;
-"23567")
-echo "$Call|$Name1|$City|$State|$Country"
-;;
 esac
 
