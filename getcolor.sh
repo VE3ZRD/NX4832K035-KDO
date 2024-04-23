@@ -29,7 +29,7 @@ declare -i mt
 # Red=6
 
 m1=$(sed -nr "/^\[General]/ { :1 /^Color[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b 1;}" /usr/local/etc/Nextion_Support/Colors.ini)
-m2=$(sed -nr "/^\[General]/ { :1 /^Split[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b 1;}" /usr/local/etc/Nextion_Support/Colors.ini)
+m2=$(sed -nr "/^\[General]/ { :1 /^LastSplit[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b 1;}" /usr/local/etc/Nextion_Support/Colors.ini)
 
 m3=$(sed -nr "/^\[MMDVM]/ { :1 /^Enable[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b 1;}" /usr/local/etc/Nextion_Support/Colors.ini)
 m4=$(sed -nr "/^\[DMR]/ { :1 /^Enable[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b 1;}" /usr/local/etc/Nextion_Support/Colors.ini)

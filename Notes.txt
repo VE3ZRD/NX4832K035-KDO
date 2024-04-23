@@ -1,0 +1,8 @@
+1) Created YSf2DMR, YSF2NXDN and YSF2P25 Pages
+2) Updated Modes Page to run much faster
+3) Created a new Menu to handle additional Screens triggered from Links page Center ICON
+4) Moved Color set for DMR Page to DMR Page and reset all Global fields to Local
+5) On Idle and DMR pages changed S) from Hotspot to TouchCap Touchcapdoes not use screen realestate
+6) Created  new Colorset page with 10 profiles that are all user configurable
+7) Color profiles are in /usr/local/etc/Nextion_Support/Colors.ini
+
