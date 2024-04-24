@@ -32,7 +32,7 @@ fi
 		mt="$gw|$m1|$m2|$m3|$m4|$m5|$m6"
 		echo "$mt"
 	fi
-        if [ "$1" = "2" ]; then
+        if [ "$1" = "3" ]; then
                 m1=$(sudo sed -n '/^[ \t]*\[DMR Network 1\]/,/\[/s/^[ \t]*Name[ \t]*=[ \t]*//p' /etc/dmrgateway)
                 m2=$(sudo sed -n '/^[ \t]*\[DMR Network 2\]/,/\[/s/^[ \t]*Name[ \t]*=[ \t]*//p' /etc/dmrgateway)
                 m3=$(sudo sed -n '/^[ \t]*\[DMR Network 3\]/,/\[/s/^[ \t]*Name[ \t]*=[ \t]*//p' /etc/dmrgateway)
@@ -50,7 +50,7 @@ fi
                 echo "$mts"
         fi
        
-        if [ "$1" = "3" ]; then
+        if [ "$1" = "2" ]; then
                 m1=$(sudo sed -n '/^[ \t]*\[DMR Network 1\]/,/\[/s/^[ \t]*Address[ \t]*=[ \t]*//p' /etc/dmrgateway)
                 m2=$(sudo sed -n '/^[ \t]*\[DMR Network 2\]/,/\[/s/^[ \t]*Address[ \t]*=[ \t]*//p' /etc/dmrgateway)
                 m3=$(sudo sed -n '/^[ \t]*\[DMR Network 3\]/,/\[/s/^[ \t]*Address[ \t]*=[ \t]*//p' /etc/dmrgateway)
