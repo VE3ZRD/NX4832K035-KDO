@@ -9,17 +9,22 @@
 set -o errexit
 set -o pipefail
 
-if [ -z "$1" ]; then
-        df="1"
-fi
+	wl=$(sudo sed -n '/^[ \t]*\[DMR\]/,/\[/s/^[ \t]*WhiteList[ \t]*=[ \t]*//p' /etc/mmdvmhost)
+
+	if [ -z "$1" ]; then
+        	df="1"
+	fi
 
 	gwa=$(sudo sed -n '/^[ \t]*\[DMR Network\]/,/\[/s/^[ \t]*Address[ \t]*=[ \t]*//p' /etc/mmdvmhost)
-	if [ "$gwa" = "127.0.0.1" ]; then
-		gw="1"
-	else
-		gw="0"
-		master="$gwa"
-		echo "$gw|$master"
+
+
+	if [ "$1" = "0" ]; then
+		if [ "$gwa" = "127.0.0.1" ]; then
+			gw="1"
+		else
+			gw="0"
+		fi
+		echo "$gw|$gwa|$wl"
 	fi
 
 	if [ "$1" = "1" ]; then

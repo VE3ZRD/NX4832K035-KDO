@@ -10,12 +10,14 @@ set -o errexit
 set -o pipefail
 # Check all five cross modes and set each one to either 0 or 1
 #Clear all Main Modes
+
 if [ -z "$2" ]; then
     exit
 else
 
 	m1=$(sed -nr "/^\[General\]/ { :1 /^Id[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b 1;}" /etc/mmdvmhost)
-
+	wlist="$m1""03"
+        sudo sed -i '/^\[/h;G;/DMR/s/\(WhiteList=\).*/\1'"$wlist"'/m;P;d' /etc/dmr2nxdn
 
 	sudo /usr/local/sbin/mmdvmhost.service stop  > /dev/null
 	sudo mount -o remount,rw /
@@ -55,6 +57,7 @@ else
                 sudo sed -i '/^\[/h;G;/DMR Network/s/\(Local=\).*/\162032/m;P;d' /etc/mmdvmhost
                 sudo sed -i '/^\[/h;G;/DMR Network/s/\(RemotePort=\).*/\162031/m;P;d' /etc/mmdvmhost
                 sudo sed -i '/^\[/h;G;/DMR Network/s/\(LocalPort=\).*/\162032/m;P;d' /etc/mmdvmhost
+                sudo sed -i '/^\[/h;G;/NXDN Network/s/\(Enable=\).*/\11/m;P;d' /etc/mmdvmhost
 
 
 		sudo /usr/local/sbin/mmdvmhost.service start  > /dev/null
@@ -79,21 +82,19 @@ else
 
                 sudo sed -i '/^\[/h;G;/DMR Network 3/s/\(^Name=\).*/\1'"DMR2NXDN Crossover"'/m;P;d' /etc/dmrgateway
                 sudo sed -i '/^\[/h;G;/DMR Network 3/s/\(^Address=\).*/\1'"127.0.0.3"'/m;P;d' /etc/dmrgateway
-                sudo sed -i '/^\[/h;G;/DMR Network 3/s/\(^Port=\).*/\162033/m;P;d' /etc/dmrgateway
-                sudo sed -i '/^\[/h;G;/DMR Network 3/s/\(^Local=\).*/\162034/m;P;d' /etc/dmrgateway
+                sudo sed -i '/^\[/h;G;/DMR Network 3/s/\(^Port=\).*/\162035/m;P;d' /etc/dmrgateway
+                sudo sed -i '/^\[/h;G;/DMR Network 3/s/\(^Local=\).*/\162036/m;P;d' /etc/dmrgateway
 
                 sudo sed -i '/^\[/h;G;/DMR Network/s/\(^Type=\).*/\1'"Direct"'/m;P;d' /etc/mmdvmhost
                 sudo sed -i '/^\[/h;G;/DMR Network/s/\(^Password=\).*/\1'"none"'/m;P;d' /etc/mmdvmhost
                 sudo sed -i '/^\[/h;G;/DMR Network/s/\(Enable=\).*/\11/m;P;d' /etc/mmdvmhost
-                sudo sed -i '/^\[/h;G;/DMR Network/s/\(Address=\).*/\1127.0.0.2/m;P;d' /etc/mmdvmhost
+                sudo sed -i '/^\[/h;G;/DMR Network/s/\(Address=\).*/\1127.0.0.3/m;P;d' /etc/mmdvmhost
                 sudo sed -i '/^\[/h;G;/DMR Network/s/\(RemoteAddress=\).*/\1127.0.0.3/m;P;d' /etc/mmdvmhost
-                sudo sed -i '/^\[/h;G;/DMR Network/s/\(Port=\).*/\162031/m;P;d' /etc/mmdvmhost
-                sudo sed -i '/^\[/h;G;/DMR Network/s/\(Local=\).*/\162032/m;P;d' /etc/mmdvmhost
-                sudo sed -i '/^\[/h;G;/DMR Network/s/\(RemotePort=\).*/\162031/m;P;d' /etc/mmdvmhost
-                sudo sed -i '/^\[/h;G;/DMR Network/s/\(LocalPort=\).*/\162032/m;P;d' /etc/mmdvmhost
-
-                sudo sed -i '/^\[/h;G;/YSF Network/s/\(Enable=\).*/\11/m;P;d' /etc/mmdvmhost
-                sudo sed -i '/^\[/h;G;/FCS Network/s/\(Enable=\).*/\11/m;P;d' /etc/mmdvmhost
+                sudo sed -i '/^\[/h;G;/DMR Network/s/\(Port=\).*/\162035/m;P;d' /etc/mmdvmhost
+                sudo sed -i '/^\[/h;G;/DMR Network/s/\(Local=\).*/\162036/m;P;d' /etc/mmdvmhost
+                sudo sed -i '/^\[/h;G;/DMR Network/s/\(RemotePort=\).*/\162035/m;P;d' /etc/mmdvmhost
+                sudo sed -i '/^\[/h;G;/DMR Network/s/\(LocalPort=\).*/\162036/m;P;d' /etc/mmdvmhost
+                sudo sed -i '/^\[/h;G;/NXDN Network/s/\(Enable=\).*/\11/m;P;d' /etc/mmdvmhost
 
 		sudo /usr/local/sbin/mmdvmhost.service start  > /dev/null
                 sudo /usr/local/sbin/dmr2nxdn.service restart > /dev/null

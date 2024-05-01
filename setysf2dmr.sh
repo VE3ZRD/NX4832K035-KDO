@@ -111,14 +111,7 @@ sudo mount -o remount,rw /
 # If Disabled
 	if [ "$p1" == 0 ]; then
 
-sudo mount -o remount,rw /
-			echo "Clearing YSF Parameters"  >> /home/pi-star/ysf2dmr.log
-
-			## Clear YSF Parameters
- 	        	sudo sed -i '/\[Enabled\]/!b;n;cEnabled='"0"'' /etc/ysf2dmr
-        		sudo sed -i '/^\[/h;G;/System Fusion/s/\(Enable=\).*/\10/m;P;d' /etc/mmdvmhost
-        		sudo sed -i '/^\[/h;G;/YSF Network/s/\(Enabled=\).*/\10/m;P;d' /etc/ysfgateway
-        		sudo sed -i '/^\[/h;G;/FCS Network/s/\(Enabled=\).*/\10/m;P;d' /etc/ysfgateway
+			sudo mount -o remount,rw /
 
 			## Ser DMR Master  >> /home/pi-star/ysf2dmr.log
 
@@ -127,8 +120,9 @@ sudo mount -o remount,rw /
         		sudo sed -i '/^\[/h;G;/DMR/s/\(Enable=\).*/\11/m;P;d' /etc/mmdvmhost
         		sudo sed -i '/^\[/h;G;/DMR Network/s/\(Enable=\).*/\11/m;P;d' /etc/mmdvmhost
 
-        		sudo sed -i '/^\[/h;G;/DMR/s/\(^Id=\).*/\1'"$p6"'/m;P;d' /etc/mmdvmhost
+        		sudo sed -i '/^\[/h;G;/DMR/s/\(^Id=\).*/\1'"$p601"'/m;P;d' /etc/mmdvmhost
         		sudo sed -i '/^\[/h;G;/DMR Network/s/\(Port=\).*/\1'"$p3"'/m;P;d' /etc/mmdvmhost
+        		sudo sed -i '/^\[/h;G;/DMR Network/s/\(Local=\).*/\1'"$p3"'/m;P;d' /etc/mmdvmhost
 		
 			if [ "$p8" == 0 ]; then
         			sudo sed -i '/^\[/h;G;/DMR Network/s/\(Address=\).*/\1'"$p4"'/m;P;d' /etc/mmdvmhost
@@ -137,7 +131,8 @@ sudo mount -o remount,rw /
 			else
 				sudo sed -i '/^\[/h;G;/DMR Network/s/\(Address=\).*/\1'"127.0.0.1"'/m;P;d' /etc/mmdvmhost
 				sudo sed -i '/^\[/h;G;/DMR Network/s/\(Type=\).*/\1'"Gateway"'/m;P;d' /etc/mmdvmhost
-				sudo sed -i '/^\[/h;G;/DMR Network/s/\(LocalPort=\).*/\1'"62032"'/m;P;d' /etc/mmdvmhost
+				sudo sed -i '/^\[/h;G;/DMR Network/s/\(Port=\).*/\1'"62032"'/m;P;d' /etc/mmdvmhost
+				sudo sed -i '/^\[/h;G;/DMR Network/s/\(Local=\).*/\1'"62032"'/m;P;d' /etc/mmdvmhost
 				sudo dmrgateway.service restart
 				echo "Starting DMRGateway" >> /home/pi-star/ysf2dmr.log
 			fi
