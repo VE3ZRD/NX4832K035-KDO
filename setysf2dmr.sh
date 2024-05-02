@@ -30,7 +30,7 @@ p2=1
 p3=62031
 p4=tgif.network
 p5=31665
-p6=3023954
+p6=0
 p7=0
 p8=0
 }
@@ -45,7 +45,7 @@ p2=${args[1]}	#Wires=x On/Off
 p3=62031	#Port
 p4=${args[2]}	#Address
 p5=${args[3]}	#TG
-p6="$m1"
+p6="$m1""03"
 p7=${args[4]}	#Disconnect
 p8=${args[5]}	#DMRGateway
 

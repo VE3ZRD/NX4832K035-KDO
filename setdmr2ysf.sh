@@ -3,7 +3,6 @@
 #  Set DMR2YSF Parameters                                  #
 #							   #
 #  Enable "$1" = 1 Sets DMR2YSF Mode			   #
-#  Enable "$1" = 0 Clears YSF2DMR Mode & Sets DMR Master   #
 #							   #
 #  VE3RD                                      2024-04-27   #
 ############################################################
@@ -13,15 +12,13 @@ set -o pipefail
 #Clear all Main Modes
 #P1=Address/Server
 #P2=DMR2YSF ON/OFF
-#P3=WhiteList
-wlist="3023954.3020733"
 
 if [ -z "$2" ]; then
     exit
 else
 
 	m1=$(sed -nr "/^\[General\]/ { :1 /^Id[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b 1;}" /etc/mmdvmhost)
-
+	wlist="$m1""02"
 
 	sudo /usr/local/sbin/mmdvmhost.service stop  > /dev/null
 	sudo mount -o remount,rw /
