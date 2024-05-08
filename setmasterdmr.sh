@@ -15,8 +15,6 @@ m2=$(sed -nr "/^\[DMR\]/ { :1 /^WhiteList[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b 1;}"
 sudo /usr/local/sbin/mmdvmhost.service stop  > /dev/null
 sudo /usr/local/etc/Nextion_Support/clearallmodes.sh
 p1="$1" ##dmr server address or 127.0.0.1 forDMRGateway
-p2="$2" ## Port
-p3="$3" ## TG
 
 emd="$m1""01"
 

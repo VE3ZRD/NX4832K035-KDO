@@ -1,0 +1,10 @@
+[Networks]
+TGIF=passw0rd
+BM=passw0rd
+MNET=passw0rd
+SPARE1=passw0rd
+
+
+
+
+
