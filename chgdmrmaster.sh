@@ -10,12 +10,19 @@ set -o errexit
 set -o pipefail
 # Use passed DMR Master if present or default to TGIF if missing
 if [ -z "$1" ]; then
-NewHost="Address=74.91.125.81"
+Address="tgif.network"
 else
-NewHost="Address="$1
+address=$(echo "$line" | cut -d "|" -f1)
 fi
+sudo mount -o remount,rw /
 
-# Get old DMR Host from /etc/mmdvmhost
-Host=$(sudo cat /etc/mmdvmhost | grep "\[DMR Network\]" -A 6 | grep "Address=")
-# Replace with host that was selected on the Profiles 2 Nextion screen
-sudo sed -i 's+'"$Host"'+'"$NewHost"'+' /etc/mmdvmhost;
+line="$1"
+passwd=$(echo "$line" | cut -d "|" -f2)
+port=$(echo "$line" | cut -d "|" -f3)
+
+sed -i '/^\[/h;G;/DMR Network/s/\(Address=\).*/\1'"$address"'/m;P;d'  /etc/mmdvmhost
+sed -i '/^\[/h;G;/DMR Network/s/\(Password=\).*/\1'"$passed"'/m;P;d'  /etc/mmdvmhost
+sed -i '/^\[/h;G;/DMR Network/s/\(Port=\).*/\1'"$port"'/m;P;d'  /etc/mmdvmhost
+
+mmdvmhost.service restart
+sudo mount -o remount,ro /

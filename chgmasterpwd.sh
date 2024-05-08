@@ -6,6 +6,8 @@
 #                                                                  #
 # KF6S                                                 05-20-2019  #
 ####################################################################
+#####  No Longer Used
+#####################
 set -o errexit
 set -o pipefail
 # Use passed DMR Master if present or default to TGIF if missing
