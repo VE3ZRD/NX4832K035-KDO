@@ -30,7 +30,8 @@ m10=passw0rd
 #                echo "$mt"
 
 
-sudo sed -i '/^\[/h;G;/Profile 0/s/\(RXOffset=\).*/\1'"$m1"'/m;P;d'  /usr/local/etc/Nextion_Support/profiles.txt
+sudo sed -i '/^\[/h;G;/LastProfile/s/\(LPNum=\).*/\1'"$pnum"'/m;P;d'  /usr/local/etc/Nextion_Support/profiles.txt
+
 sudo sed -i '/^\[/h;G;/Profile 0/s/\(TXOffset=\).*/\1'"$m2"'/m;P;d'  /usr/local/etc/Nextion_Support/profiles.txt
 sudo sed -i '/^\[/h;G;/Profile 0/s/\(RXFrequency=\).*/\1'"$m3"'/m;P;d'  /usr/local/etc/Nextion_Support/profiles.txt
 sudo sed -i '/^\[/h;G;/Profile 0/s/\(TXFrequency=\).*/\1'"$m4"'/m;P;d'  /usr/local/etc/Nextion_Support/profiles.txt
@@ -65,6 +66,9 @@ t2=$(echo "$m7" | cut -d "." -f 1)
         if [ "$t1" == 127 ]; then
 		sudo sed -i '/^\[/h;G;/DMR Network/s/\(Type=\).*/\1'"Gateway"'/m;P;d'  /etc/mmdvmhost
                 m4=$(sed -nr "/^\[Networks\]/ { :l /^TGIF[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b l;}" $pwf)
+		sudo sed -i '/^\[/h;G;/Info/s/\(RXFrequency=\).*/\1'"$m3"'/m;P;d'  /etc/dmrgateway
+		sudo sed -i '/^\[/h;G;/Imfo/s/\(TXFrequency=\).*/\1'"$m4"'/m;P;d'  /etc/dmrgateway
+
 		dmrgateway.service restart
         fi
 

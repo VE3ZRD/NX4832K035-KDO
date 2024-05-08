@@ -1,5 +1,5 @@
 [LastProfile]
-LPNum=2
+LPNum=3
 
 [Profile 0]
 Name=DMRGateway
