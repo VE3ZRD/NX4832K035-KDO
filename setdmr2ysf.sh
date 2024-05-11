@@ -37,8 +37,7 @@ else
                 sudo sed -i '/^\[/h;G;/DMR Network/s/\(LocalAddress=\).*/\1'"127.0.0.1"'/m;P;d' /etc/dmr2ysf
 ##
                 sudo sed -i '/^\[/h;G;/DMR/s/\(Enable=\).*/\11/m;P;d' /etc/mmdvmhost
-                sudo sed -i '/^\[/h;G;/DMR/s/\(^Id=\).*/\1'"$m101"'/m;P;d' /etc/mmdvmhost
-
+                sudo sed -i '/^\[/h;G;/DMR/s/\(^Id=\).*/\1'"$wlist"'/m;P;d' /etc/mmdvmhost
 
                 sudo sed -i '/^\[/h;G;/DMR Network 3/s/\(^Enabled=\).*/\11/m;P;d' /etc/dmrgateway
                 sudo sed -i '/^\[/h;G;/DMR Network 3/s/\(^TGRewrite0=\).*/\1'"2,13000001,2,1,999998"'/m;P;d' /etc/dmrgateway

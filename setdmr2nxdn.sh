@@ -11,6 +11,9 @@ set -o pipefail
 # Check all five cross modes and set each one to either 0 or 1
 #Clear all Main Modes
 
+#p1=Gateway
+#p2=DMR2NXDN
+
 if [ -z "$2" ]; then
     exit
 else
@@ -29,7 +32,7 @@ else
 	# If Enabled
 
 	if [ "$1" == "1" ] && [ "$2" == "1" ]; then
-
+		# Dmegateway On  -  DMR2NXDN ON
                 sudo sed -i '/^\[/h;G;/Enabled/s/\(Enabled=\).*/\11/m;P;d' /etc/dmr2nxdn
                 sudo sed -i '/^\[/h;G;/DMR Network/s/\(DefaultDstTG=\).*/\1'"32592"'/m;P;d' /etc/dmr2nxdn
                 sudo sed -i '/^\[/h;G;/DMR Network/s/\(LocalAddress=\).*/\1'"127.0.0.1"'/m;P;d' /etc/dmr2nxdn
@@ -41,7 +44,7 @@ else
                 sudo sed -i '/^\[/h;G;/DMR Network 3/s/\(^Enabled=\).*/\11/m;P;d' /etc/dmrgateway
                 sudo sed -i '/^\[/h;G;/DMR Network 3/s/\(^TGRewrite0=\).*/\1'"2,13000001,2,1,999998"'/m;P;d' /etc/dmrgateway
 
-                sudo sed -i '/^\[/h;G;/Network/s/\(^Startup=\).*/\1'"US-America-Link"'/m;P;d' /etc/NXDNgateway
+                sudo sed -i '/^\[/h;G;/Network/s/\(^Startup=\).*/\1'"US-America-Link"'/m;P;d' /etc/nxdngateway
 
                 sudo sed -i '/^\[/h;G;/DMR Network 3/s/\(^Name=\).*/\1'"DMR2NXDN Crossover"'/m;P;d' /etc/dmrgateway
                 sudo sed -i '/^\[/h;G;/DMR Network 3/s/\(^Address=\).*/\1'"127.0.0.1"'/m;P;d' /etc/dmrgateway
@@ -60,13 +63,13 @@ else
                 sudo sed -i '/^\[/h;G;/NXDN Network/s/\(Enable=\).*/\11/m;P;d' /etc/mmdvmhost
 
 
-		sudo /usr/local/sbin/mmdvmhost.service start  > /dev/null
-                sudo /usr/local/sbin/dmr2NXDN.service restart > /dev/null
-                sudo /usr/local/sbin/NXDNgateway.service restart > /dev/null
+                sudo /usr/local/sbin/dmr2nxdn.service restart > /dev/null
+                sudo /usr/local/sbin/nxdngateway.service restart > /dev/null
                 sudo /usr/local/sbin/dmrgateway.service restart > /dev/null
 		echo "Setting DMRgateway OFF DMR2NXDN ON"
 	fi
 	if [ "$1" == "0" ] && [ "$2" == "1" ]; then
+		# Dmegateway Off  -  DMR2NXDN ON
 
                 sudo sed -i '/^\[/h;G;/Enabled/s/\(Enabled=\).*/\11/m;P;d' /etc/dmr2nxdn
                 sudo sed -i '/^\[/h;G;/DMR Network/s/\(DefaultDstTG=\).*/\1'"32592"'/m;P;d' /etc/dmr2nxdn
@@ -96,14 +99,12 @@ else
                 sudo sed -i '/^\[/h;G;/DMR Network/s/\(LocalPort=\).*/\162036/m;P;d' /etc/mmdvmhost
                 sudo sed -i '/^\[/h;G;/NXDN Network/s/\(Enable=\).*/\11/m;P;d' /etc/mmdvmhost
 
-		sudo /usr/local/sbin/mmdvmhost.service start  > /dev/null
                 sudo /usr/local/sbin/dmr2nxdn.service restart > /dev/null
                 sudo /usr/local/sbin/nxdngateway.service restart > /dev/null
-                sudo /usr/local/sbin/dmrgateway.service restart > /dev/null
+                sudo /usr/local/sbin/dmrgateway.service stop > /dev/null
 
 
 		echo "Setting DMRgateway OFF DMR2NXDN ON"
-sudo /usr/local/sbin/mmdvmhost.service start  > /dev/null
 	fi
 	
 # If Disabled
@@ -117,7 +118,6 @@ sudo /usr/local/sbin/mmdvmhost.service start  > /dev/null
         		sudo sed -i '/^\[/h;G;/DMR Network/s/\(^Address=\).*/\1tgif.network/m;P;d' /etc/mmdvmhost
         		sudo sed -i '/^\[/h;G;/DMR Network/s/\(^Password=\).*/\1'"passw0rd"'/m;P;d' /etc/mmdvmhost
 		echo "Setting Master DMR to TGIF"
-sudo /usr/local/sbin/mmdvmhost.service start  > /dev/null
   
 	fi
 	if [ "$1" = 1 ] &&  [ "$2" = 0 ]; then
@@ -129,11 +129,13 @@ sudo /usr/local/sbin/mmdvmhost.service start  > /dev/null
         		sudo sed -i '/^\[/h;G;/DMR Network/s/\(^Address=\).*/\1'"127.0.0.1"'/m;P;d' /etc/mmdvmhost
         		sudo sed -i '/^\[/h;G;/DMR Network/s/\(^Password=\).*/\1'"passw0rd"'/m;P;d' /etc/mmdvmhost
   		echo "Setting DMRgateway ON DMR2YSF OFF"
-sudo /usr/local/sbin/mmdvmhost.service start  > /dev/null
+                sudo /usr/local/sbin/dmrgateway.service restart > /dev/null
 
 	fi
 
 fi;
+sudo /usr/local/sbin/mmdvmhost.service start  > /dev/null
+
 sudo mount -o remount,ro /
 
 
