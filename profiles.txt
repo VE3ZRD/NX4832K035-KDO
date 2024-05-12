@@ -1,20 +1,20 @@
 [LastProfile]
-LPNum=8
+LPNum=5
 
 [Profile 0]
-Name=NXDN
+Name=P25 10210
 RXOffset=-250
 TXOffset=-250
 RXFrequency=434900000
 TXFrequency=434900000
 Callsign=VE3RD
-Id=302073304
-ExtId=302073304
-Mode=DMR2NXDN-G
-Address=tgif.network
+Id=3023954
+ExtId=3023954
+Mode=YSF2P25
+Address=mnet.hopto.org
 Port=41000
-Password=62031
-TalkGroup=TGIF
+Password=PWFILE
+TalkGroup=10210
 
 [Profile 1]
 Name=Default-TGIF
@@ -48,7 +48,7 @@ TalkGroup=31665
 
 
 [Profile 3]
-Name=DMRGateway
+Name=MNET
 RXOffset=-250
 TXOffset=-250
 RXFrequency=434900000
@@ -60,7 +60,7 @@ Mode=DMRG
 Address=127.0.0.1
 Port=62032
 Password=Passp0rd
-TalkGroup=550
+TalkGroup=10210
 
 
 [Profile 4]
@@ -81,19 +81,19 @@ TalkGroup=32592
 #32592;US-America-Link;AmericaLink;63.250.41.136;42000;823
 
 [Profile 5]
-Name=BARC-R
-RXOffset=-400
-TXOffset=-400
+Name=P25 10210
+RXOffset=-250
+TXOffset=-250
 RXFrequency=434900000
 TXFrequency=434900000
 Callsign=VE3RD
-Id=302073304
-Mode=YSF2DMR
-Address=tgif.network
-Port=62031
+Id=3023954
+Mode=YSF2P25
+Address=mnet.hopto.org
+Port=41000
 Local=62037
-Password=passw0rd
-TalkGroup=31665
+Password=PWFILE
+TalkGroup=10210
 
 
 [Profile 6]
