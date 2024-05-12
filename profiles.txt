@@ -48,7 +48,7 @@ TalkGroup=31665
 
 
 [Profile 3]
-Name=MNET
+Name=MNET-G
 RXOffset=-250
 TXOffset=-250
 RXFrequency=434900000
@@ -97,7 +97,7 @@ TalkGroup=10210
 
 
 [Profile 6]
-Name=
+Name=AmericaLink-G
 RXOffset=-250
 TXOffset=-250
 RXFrequency=434900000
@@ -106,9 +106,9 @@ Callsign=VE3RD
 Id=302073304
 Mode=32592
 Address=DMR2YSF-G
-Port=
+Port=41000
 Password=passw0rd
-TalkGroup=
+TalkGroup=32592
 
 
 [Profile 7]
@@ -127,7 +127,7 @@ TalkGroup=31665
 
 
 [Profile 8]
-Name=NXDN
+Name=NXDN-G TGIF
 RXOffset=-250
 TXOffset=-250
 RXFrequency=434900000
