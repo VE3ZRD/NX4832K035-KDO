@@ -1,37 +1,50 @@
 [LastProfile]
-LPNum=5
+LPNum=1
 
 [Profile 0]
-Name=P25 10210
+Name=Default-TGIF 31665
 RXOffset=-250
 TXOffset=-250
 RXFrequency=434900000
 TXFrequency=434900000
 Callsign=VE3RD
 Id=3023954
-ExtId=3023954
-Mode=YSF2P25
-Address=mnet.hopto.org
-Port=41000
+Mode=DMRG
+Address=tgif.network
+Port=62031
 Password=PWFILE
-TalkGroup=10210
+TalkGroup=31665
 
 [Profile 1]
-Name=Default-TGIF
-RXOffset=-401
-TXOffset=-401
+Name=Default-TGIF 31665
+RXOffset=-250
+TXOffset=-250
 RXFrequency=434900000
 TXFrequency=434900000
 Callsign=VE3RD
 Id=3023954
-ExtId=302395404
 Mode=DMR
 Address=tgif.network
 Port=62031
-Password=62031
+Password=PWFILE
 TalkGroup=31665
 
 [Profile 2]
+Name=TGIF-G
+RXOffset=-250
+TXOffset=-250
+RXFrequency=434900000
+TXFrequency=434900000
+Callsign=VE3RD
+Id=3023954
+Mode=DMRG
+Address=127.0.0.1
+Port=62032
+Password=Passw0rd
+TalkGroup=31665
+
+
+[Profile 3]
 Name=MNET
 RXOffset=-250
 TXOffset=-250
@@ -39,15 +52,14 @@ RXFrequency=434900000
 TXFrequency=434900000
 Callsign=VE3RD
 Id=3023954
-ExtId=3023954
 Mode=DMR
 Address=mnet.hopto.org
 Port=62032
 Password=Passw0rd
-TalkGroup=31665
+TalkGroup=10210
 
 
-[Profile 3]
+[Profile 4]
 Name=MNET-G
 RXOffset=-250
 TXOffset=-250
@@ -55,23 +67,21 @@ RXFrequency=434900000
 TXFrequency=434900000
 Callsign=VE3RD
 Id=3023954
-ExtId=3023954
 Mode=DMRG
-Address=127.0.0.1
+Address=mnet.hopto.org
 Port=62032
-Password=Passp0rd
+Password=Passw0rd
 TalkGroup=10210
 
 
-[Profile 4]
-Name=YSF
-RXOffset=-401
-TXOffset=-401
+[Profile 5]
+Name=YSF AmericaLink
+RXOffset=-250
+TXOffset=-250
 RXFrequency=434900000
 TXFrequency=434900000
 Callsign=VE3RD
 Id=302073304
-ExtId=302073304
 Mode=YSF
 Address=63.250.41.136
 Port=42000
@@ -80,8 +90,8 @@ TalkGroup=32592
 
 #32592;US-America-Link;AmericaLink;63.250.41.136;42000;823
 
-[Profile 5]
-Name=P25 10210
+[Profile 6]
+Name=P25 MNET 10210
 RXOffset=-250
 TXOffset=-250
 RXFrequency=434900000
@@ -94,21 +104,6 @@ Port=41000
 Local=62037
 Password=PWFILE
 TalkGroup=10210
-
-
-[Profile 6]
-Name=AmericaLink-G
-RXOffset=-250
-TXOffset=-250
-RXFrequency=434900000
-TXFrequency=434900000
-Callsign=VE3RD
-Id=302073304
-Mode=32592
-Address=DMR2YSF-G
-Port=41000
-Password=passw0rd
-TalkGroup=32592
 
 
 [Profile 7]
@@ -127,7 +122,7 @@ TalkGroup=31665
 
 
 [Profile 8]
-Name=NXDN-G TGIF
+Name=NXDN
 RXOffset=-250
 TXOffset=-250
 RXFrequency=434900000
@@ -157,17 +152,17 @@ TalkGroup=31499
 
 
 [Profile 10]
-Name=TGIF P25
+Name=Default-TGIF 31665
 RXOffset=-250
 TXOffset=-250
 RXFrequency=434900000
 TXFrequency=434900000
 Callsign=VE3RD
 Id=3023954
-Mode=YSF2P25
+Mode=DMRG
 Address=tgif.network
-Port=41400
-Password=password
+Port=62031
+Password=PWFILE
 TalkGroup=31665
 
 

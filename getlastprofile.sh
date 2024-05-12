@@ -38,7 +38,7 @@ pwf=/home/pi-star/pwfile.txt
         m43=$(sed -nr "/^\[Networks\]/ { :l /^BM[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b l;}" $pwf)
         m41=$(sed -nr "/^\[Networks\]/ { :l /^TGIF[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b l;}" $pwf)
 
-	if [ "$pww1" = 127 ] 
+	if [ "$pww1" = 127 ]  || [  "$pww1" = tgif ];
 		then
 		m14=$(sed -nr "/^\[Networks\]/ { :l /^TGIF[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b l;}" $pwf)
 
