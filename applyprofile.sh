@@ -145,6 +145,9 @@ sudo sed -i '/^\[/h;G;/POCSAG Network/s/\(Enable=\).*/\11/m;P;d'  /etc/mmdvmhost
 fi
 
 
-nextiondriver.service restart
+dmrgateway.service restart
+
 mmdvmhost.service restart
+nextiondriver.service restart
+
 sudo mount -o remount,ro /

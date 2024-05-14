@@ -1,8 +1,8 @@
 [LastProfile]
-LPNum=1
+LPNum=2
 
 [Profile 0]
-Name=Default-TGIF 31665
+Name=TGIF-G
 RXOffset=-250
 TXOffset=-250
 RXFrequency=434900000
@@ -10,8 +10,8 @@ TXFrequency=434900000
 Callsign=VE3RD
 Id=3023954
 Mode=DMRG
-Address=tgif.network
-Port=62031
+Address=127.0.0.1
+Port=62032
 Password=PWFILE
 TalkGroup=31665
 
