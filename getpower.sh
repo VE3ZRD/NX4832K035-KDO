@@ -15,10 +15,20 @@ roption="P"
 else roption=$1
 fi
 
+m1=""
+m2=""
+m3=""
+m4=""
+m5=""
+
 #echo "Report Option:" "$roption"
 
 if [ $roption == $"P" ]; then
         hex=$(vcgencmd get_throttled | awk '{print substr( $0, 11, 200 ) }')
+#	echo "$hex"
+	echo $(($hex))
+#	
+
         if (( ($hex & 0x01) == 0x01 ))
                 then echo "Under voltage detected"
         fi
@@ -40,7 +50,7 @@ if [ $roption == $"P" ]; then
         fi
 
         if (( ($hex & 0x10000) == 0x10000 ))
-        then echo "Arm frequency capped has occurred"
+	        then echo "Arm frequency capped has occurred"
         fi
 
         if (( ($hex & 0x20000) == 0x20000 ))

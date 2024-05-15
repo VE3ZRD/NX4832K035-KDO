@@ -1,0 +1,32 @@
+
+
+Started 2024-05-15
+
+Previous to this date
+1) Updated WIFI to load all 10 ssid's in one batch,  Faster Loading
+2) Updated hang times to read from and write to pi-star in one batch, Faster Loading
+3) Created YSF2DMR, YSF2P25, YSF2NXDN. DMR2YSF, DMR2NXDN Crossover Screens
+4) Created a new additional links(Menu) screen to handle new Screens. Bypass the original Color Seting screen
+5) Idle Screen will show DMRGateway and Net Number(When using DMRGateway)
+6) Removed some flickering from Idle Screen( Removed all vis command from S0, Loading Idel screen starts a timer, after one second it does a few vis x,1 commands then disables the timer)
+7) Created a DMRGateway control screen, Turn DMRGateway ON/OFF Turn Network 1 to 6 ON/OFF
+	Shows what server is set for each network. This is not setable via the screen
+8) Idle screen now only does colors for Idel Screen
+9) DMR, YSF,NXDN, and P25 look after their own colors
+10) New Set Color screen with 10 patterns all user settable, 
+	You can adjust your colors with a slider or type them in and see the results in two Text Boxes, One for the upp half of the screen and one for the bottom half of the screen. There is a button to reverse the top and bottom color set. The last used color will be loaded on a reboot
+11) Multiple new and updated scripts to handle the above
+12) A button was added to the flash screen to provide and option as to which screen set to load
+            git copy EA7KDO  to load Original EA7KDO Screen and scripts
+            git copy Beta to load new beta screen and scripts
+            This dual screen option may remain a choice for some time.
+13) Modified Splash screen to show more, and better highlight Mitch EA7KDO
+
+2024-05-15   Beta Version 15 May 2024 B
+1) Changed temperature rquest timing from 3 sec to 90 sec
+2) Changed Idel Screen Last Uer Location to Scrolling Text Box
+3) Removed all Location setting from flag setup page
+4) Locations now comes from pi-star through Nextion Driver
+5) Bug Fix - IP Address at the bttom of all Mode screens(My Fault)
+6) Completed code on Dash Screen to Display Power Status
+
