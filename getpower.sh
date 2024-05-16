@@ -15,12 +15,6 @@ roption="P"
 else roption=$1
 fi
 
-m1=""
-m2=""
-m3=""
-m4=""
-m5=""
-
 #echo "Report Option:" "$roption"
 
 if [ $roption == $"P" ]; then
