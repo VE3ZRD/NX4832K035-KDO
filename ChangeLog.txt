@@ -34,4 +34,7 @@ Previous to this date
 1) Added a page to show the log detail for the last logged callsign, 
 	triggered by touching the label area at the lower left side of the idle screen
 2) Changed DMR Screen to show city, state, Country in one wide label field.
-3)
+
+2024-05-30
+1) Moved Colors.ini and profiles.txt to /etc/ to preserve setting through and update
+

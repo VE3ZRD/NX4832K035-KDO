@@ -7,7 +7,11 @@
 set -o errexit
 set -o pipefail
 # Use passed DMR Master if present or default to TGIF if missing
-dirn="/usr/local/etc/Nextion_Support/profiles.txt"
+
+#dirn="/usr/local/etc/Nextion_Support/profiles.txt"
+dirn=etc/profiles.txt
+
+
 sudo mount -o remount,rw /
 pnum="$1"
 sudo /usr/local/etc/Nextion_Support/clearallmodes.sh
@@ -26,20 +30,20 @@ sudo /usr/local/etc/Nextion_Support/clearallmodes.sh
   	m11=$(sed -nr "/^\[Profile "$pnum"\]/ { :l /^Name[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b l;}" $dirn)
         m12=$(sed -nr "/^\[Profile "$pnum"\]/ { :l /^TalkGroup[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b l;}" $dirn)
 
-sudo sed -i '/^\[/h;G;/LastProfile/s/\(LPNum=\).*/\1'"$pnum"'/m;P;d'  /usr/local/etc/Nextion_Support/profiles.txt
+sudo sed -i '/^\[/h;G;/LastProfile/s/\(LPNum=\).*/\1'"$pnum"'/m;P;d'  $dirn
 
-sudo sed -i '/^\[/h;G;/Profile 0/s/\(TXOffset=\).*/\1'"$m2"'/m;P;d'  /usr/local/etc/Nextion_Support/profiles.txt
-sudo sed -i '/^\[/h;G;/Profile 0/s/\(RXFrequency=\).*/\1'"$m3"'/m;P;d'  /usr/local/etc/Nextion_Support/profiles.txt
-sudo sed -i '/^\[/h;G;/Profile 0/s/\(TXFrequency=\).*/\1'"$m4"'/m;P;d'  /usr/local/etc/Nextion_Support/profiles.txt
-sudo sed -i '/^\[/h;G;/Profile 0/s/\(Callsign=\).*/\1'"$m5"'/m;P;d'  /usr/local/etc/Nextion_Support/profiles.txt
-sudo sed -i '/^\[/h;G;/Profile 0/s/\(Id=\).*/\1'"$m6"'/m;P;d'  /usr/local/etc/Nextion_Support/profiles.txt
+sudo sed -i '/^\[/h;G;/Profile 0/s/\(TXOffset=\).*/\1'"$m2"'/m;P;d'  $dirn
+sudo sed -i '/^\[/h;G;/Profile 0/s/\(RXFrequency=\).*/\1'"$m3"'/m;P;d'  $dirn
+sudo sed -i '/^\[/h;G;/Profile 0/s/\(TXFrequency=\).*/\1'"$m4"'/m;P;d'  $dirn
+sudo sed -i '/^\[/h;G;/Profile 0/s/\(Callsign=\).*/\1'"$m5"'/m;P;d'  $dirn
+sudo sed -i '/^\[/h;G;/Profile 0/s/\(Id=\).*/\1'"$m6"'/m;P;d'  $dirn
 
-sudo sed -i '/^\[/h;G;/Profile 0/s/\(Address=\).*/\1'"$m7"'/m;P;d'  /usr/local/etc/Nextion_Support/profiles.txt
-sudo sed -i '/^\[/h;G;/Profile 0/s/\(Mode=\).*/\1'"$m8"'/m;P;d'  /usr/local/etc/Nextion_Support/profiles.txt
-sudo sed -i '/^\[/h;G;/Profile 0/s/\(Port=\).*/\1'"$m9"'/m;P;d'  /usr/local/etc/Nextion_Support/profiles.txt
-##### #sudo sed -i '/^\[/h;G;/Profile 0/s/\(Password=\).*/\1'"$m10"'/m;P;d'  /usr/local/etc/Nextion_Support/profiles.txt
-sudo sed -i '/^\[/h;G;/Profile 0/s/\(Name=\).*/\1'"$m11"'/m;P;d'  /usr/local/etc/Nextion_Support/profiles.txt
-sudo sed -i '/^\[/h;G;/Profile 0/s/\(TalkGroup=\).*/\1'"$m12"'/m;P;d'  /usr/local/etc/Nextion_Support/profiles.txt
+sudo sed -i '/^\[/h;G;/Profile 0/s/\(Address=\).*/\1'"$m7"'/m;P;d'  $dirn
+sudo sed -i '/^\[/h;G;/Profile 0/s/\(Mode=\).*/\1'"$m8"'/m;P;d'  $dirn
+sudo sed -i '/^\[/h;G;/Profile 0/s/\(Port=\).*/\1'"$m9"'/m;P;d'  $dirn
+##### #sudo sed -i '/^\[/h;G;/Profile 0/s/\(Password=\).*/\1'"$m10"'/m;P;d'  $dirn
+sudo sed -i '/^\[/h;G;/Profile 0/s/\(Name=\).*/\1'"$m11"'/m;P;d'  $dirn
+sudo sed -i '/^\[/h;G;/Profile 0/s/\(TalkGroup=\).*/\1'"$m12"'/m;P;d'  $dirn
 
 
 # Set MMDVM Profile Parameters

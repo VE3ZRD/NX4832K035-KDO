@@ -10,7 +10,10 @@
 #set -o errexit
 #set -o pipefail
 ver="20240505"
-dirn=/usr/local/etc/Nextion_Support/profiles.txt
+
+#dirn=/usr/local/etc/Nextion_Support/profiles.txt
+dirn=/etc/profiles.txt
+
 pwf=/home/pi-star/pwfile.txt
 /usr/local/etc/Nextion_Support/chkpwfile.sh
 

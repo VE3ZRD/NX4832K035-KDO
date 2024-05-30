@@ -3,5 +3,5 @@
 3) Created a new Menu to handle additional Screens triggered from Links page Center ICON, and Links2
 4) Moved Color set for DMR Page to DMR Page and reset all Global fields to Local
 5) Created  new Colorset page with 10 profiles that are all user configurable
-6) Color profiles are in /usr/local/etc/Nextion_Support/Colors.ini
-
+6) Color profiles are in /etc/Colors.ini
+7) Profiles are in /etc/profiles.txt

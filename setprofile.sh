@@ -10,22 +10,22 @@ args=("$@")
 
 
 #echo "Save to profile"
-
 dirn=/usr/local/etc/Nextion_Support/profiles.txt
+
+dirn=/etc/profiles.txt
+
 pwf=/home/pi-star/pwfile.txt
 
-/usr/local/etc/Nextion_Support/chkpwfile.sh
 
 if [ -z "$1" ]; then
    exit
 else
 ver="20240505"
-dirn=/usr/local/etc/Nextion_Support/profiles.txt
 pwf=/home/pi-star/pwfile.txt
 /usr/local/etc/Nextion_Support/chkpwfile.sh
 
  	pnum="$1"
-	sudo sed -i '/^\[/h;G;/LastProfile/s/\(LPNum=\).*/\1'"$1"'/m;P;d'  /usr/local/etc/Nextion_Support/profiles.txt
+	sudo sed -i '/^\[/h;G;/LastProfile/s/\(LPNum=\).*/\1'"$1"'/m;P;d'  $dirn
  
         m1=$(sed -nr "/^\[Profile "$pnum"\]/ { :l /^RXOffset[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b l;}" $dirn)
         m2=$(sed -nr "/^\[Profile "$pnum"\]/ { :l /^TXOffset[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b l;}" $dirn)
@@ -50,18 +50,18 @@ pwf=/home/pi-star/pwfile.txt
 	p11=${args[11]}  
 	p12=${args[12]}  
 
-	sudo sed -i '/^\[/h;G;/Profile 0/s/\(RXOffset=\).*/\1'"$m1"'/m;P;d'  /usr/local/etc/Nextion_Support/profiles.txt
-	sudo sed -i '/^\[/h;G;/Profile 0/s/\(TXOffset=\).*/\1'"$m2"'/m;P;d'  /usr/local/etc/Nextion_Support/profiles.txt
-	sudo sed -i '/^\[/h;G;/Profile 0/s/\(RXFrequency=\).*/\1'"$m3"'/m;P;d'  /usr/local/etc/Nextion_Support/profiles.txt
-	sudo sed -i '/^\[/h;G;/Profile 0/s/\(TXFrequency=\).*/\1'"$m4"'/m;P;d'  /usr/local/etc/Nextion_Support/profiles.txt
-	sudo sed -i '/^\[/h;G;/Profile 0/s/\(Callsign=\).*/\1'"$m5"'/m;P;d'  /usr/local/etc/Nextion_Support/profiles.txt
-	sudo sed -i '/^\[/h;G;/Profile 0/s/\(Id=\).*/\1'"$m6"'/m;P;d'  /usr/local/etc/Nextion_Support/profiles.txt
+	sudo sed -i '/^\[/h;G;/Profile 0/s/\(RXOffset=\).*/\1'"$m1"'/m;P;d'  $dirn
+	sudo sed -i '/^\[/h;G;/Profile 0/s/\(TXOffset=\).*/\1'"$m2"'/m;P;d'  $dirn
+	sudo sed -i '/^\[/h;G;/Profile 0/s/\(RXFrequency=\).*/\1'"$m3"'/m;P;d'  $dirn
+	sudo sed -i '/^\[/h;G;/Profile 0/s/\(TXFrequency=\).*/\1'"$m4"'/m;P;d'  $dirn
+	sudo sed -i '/^\[/h;G;/Profile 0/s/\(Callsign=\).*/\1'"$m5"'/m;P;d'  $dirn
+	sudo sed -i '/^\[/h;G;/Profile 0/s/\(Id=\).*/\1'"$m6"'/m;P;d'  $dirn
 
-	sudo sed -i '/^\[/h;G;/Profile 0/s/\(Address=\).*/\1'"$m7"'/m;P;d'  /usr/local/etc/Nextion_Support/profiles.txt
-	sudo sed -i '/^\[/h;G;/Profile 0/s/\(Mode=\).*/\1'"$m8"'/m;P;d'  /usr/local/etc/Nextion_Support/profiles.txt
-	sudo sed -i '/^\[/h;G;/Profile 0/s/\(Port=\).*/\1'"$m9"'/m;P;d'  /usr/local/etc/Nextion_Support/profiles.txt
-	sudo sed -i '/^\[/h;G;/Profile 0/s/\(Name=\).*/\1'"$m11"'/m;P;d'  /usr/local/etc/Nextion_Support/profiles.txt
-	sudo sed -i '/^\[/h;G;/Profile 0/s/\(TalkGroup=\).*/\1'"$m12"'/m;P;d'  /usr/local/etc/Nextion_Support/profiles.txt
+	sudo sed -i '/^\[/h;G;/Profile 0/s/\(Address=\).*/\1'"$m7"'/m;P;d'  $dirn
+	sudo sed -i '/^\[/h;G;/Profile 0/s/\(Mode=\).*/\1'"$m8"'/m;P;d'  $dirn
+	sudo sed -i '/^\[/h;G;/Profile 0/s/\(Port=\).*/\1'"$m9"'/m;P;d'  $dirn
+	sudo sed -i '/^\[/h;G;/Profile 0/s/\(Name=\).*/\1'"$m11"'/m;P;d'  $dirn
+	sudo sed -i '/^\[/h;G;/Profile 0/s/\(TalkGroup=\).*/\1'"$m12"'/m;P;d'  $dirn
 
 
 	

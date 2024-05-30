@@ -1,6 +1,6 @@
 #!/bin/bash
 ############################################################
-#  Get Color Info from /usr/local/etc/Colors.ini           #
+#  Get Color Info from /etc/Colors.ini           #
 #                                                          #
 #  Returns a Binary Coded Value                            #
 #                                                          #
@@ -28,19 +28,21 @@ declare -i mt
 # Blue=5
 # Red=6
 
-m1=$(sed -nr "/^\[General]/ { :1 /^Color[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b 1;}" /usr/local/etc/Nextion_Support/Colors.ini)
-m2=$(sed -nr "/^\[General]/ { :1 /^LastSplit[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b 1;}" /usr/local/etc/Nextion_Support/Colors.ini)
+cfile=/etc/Colors.ini
 
-m3=$(sed -nr "/^\[MMDVM]/ { :1 /^Enable[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b 1;}" /usr/local/etc/Nextion_Support/Colors.ini)
-m4=$(sed -nr "/^\[DMR]/ { :1 /^Enable[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b 1;}" /usr/local/etc/Nextion_Support/Colors.ini)
-m5=$(sed -nr "/^\[YSF]/ { :1 /^Enable[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b 1;}" /usr/local/etc/Nextion_Support/Colors.ini)
-m6=$(sed -nr "/^\[P25]/ { :1 /^Enable[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b 1;}" /usr/local/etc/Nextion_Support/Colors.ini)
-m7=$(sed -nr "/^\[NXDN]/ { :1 /^Enable[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b 1;}" /usr/local/etc/Nextion_Support/Colors.ini)
-m8=$(sed -nr "/^\[D-Star]/ { :1 /^Enable[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b 1;}" /usr/local/etc/Nextion_Support/Colors.ini)
+#m1=$(sed -nr "/^\[General]/ { :1 /^Color[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b 1;}"  "$cfile")
+m2=$(sed -nr "/^\[General]/ { :1 /^LastSplit[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b 1;}"  "$cfile")
+
+m3=$(sed -nr "/^\[MMDVM]/ { :1 /^Enable[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b 1;}"  "$cfile")
+m4=$(sed -nr "/^\[DMR]/ { :1 /^Enable[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b 1;}"  "$cfile")
+m5=$(sed -nr "/^\[YSF]/ { :1 /^Enable[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b 1;}"  "$cfile")
+m6=$(sed -nr "/^\[P25]/ { :1 /^Enable[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b 1;}"  "$cfile")
+m7=$(sed -nr "/^\[NXDN]/ { :1 /^Enable[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b 1;}"  "$cfile")
+m8=$(sed -nr "/^\[D-Star]/ { :1 /^Enable[ ]*=/ { s/.*=[ ]*//; p; q;}; n; b 1;}"  "$cfile")
 mt="$m3 + ($m4*2) + ($m5*4) + ($m6*8) + ($m7*16) + ($m8*32)"
  
 
-mt1="$m1|$m2|$mt"
+mt1="$m2|$mt"
 echo "$mt1"
 #echo "$mt1"
 
