@@ -10,7 +10,8 @@
 
 #iwlist wlan0 scan | grep 'ESSID' | sed 's/.*ESSID:"\(.*\)".*/\1/g' | tr " " "\n"|sed -n '1p'
 #main=$(iwlist wlan0 scan | grep 'ESSID' | sed 's/.*ESSID:"\(.*\)".*/\1/g')
-main=$(iwlist wlan0 scanning | grep ESSID | grep -v "\"\"" | sed 's/.*ESSID:"\(.*\)".*/\1/g')
+#main=$(iwlist wlan0 scanning | grep ESSID | grep -v "\"\"" | sed 's/.*ESSID:"\(.*\)".*/\1/g')
+main=$(sudo iw wlan0 scan | grep -Po '(SSID):\K.*' | sed 's/ $/ [unknown SSID]/')
 p1=$(echo "$main" | sed -n '1p')
 p2=$(echo "$main" | sed -n '2p')
 p3=$(echo "$main" | sed -n '3p')
