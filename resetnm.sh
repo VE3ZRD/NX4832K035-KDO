@@ -7,8 +7,9 @@
 ############################################################
 set -o errexit
 set -o pipefail
-
+sudo mount -o remount,rw /
 sudo nextiondriver.service restart
+sleep 5
 sudo mmdvmhost.service restart
 
 
