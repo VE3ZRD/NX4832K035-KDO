@@ -18,6 +18,15 @@ m2=$(sed -n '/^[ \t]*\[ColorSet'"$SetNum"'\]/,/\[/s/^[ \t]*UpperText[ \t]*=[ \t]
 m3=$(sed -n '/^[ \t]*\[ColorSet'"$SetNum"'\]/,/\[/s/^[ \t]*LowerBack[ \t]*=[ \t]*//p' "$f1")
 m4=$(sed -n '/^[ \t]*\[ColorSet'"$SetNum"'\]/,/\[/s/^[ \t]*LowerText[ \t]*=[ \t]*//p' "$f1")
 m5=$(sed -n '/^[ \t]*\[ColorSet'"$SetNum"'\]/,/\[/s/^[ \t]*Split[ \t]*=[ \t]*//p' "$f1")
-#m5=$(sed -n '/^[ \t]*\[General\]/,/\[/s/^[ \t]*Split[ \t]*=[ \t]*//p' /usr/local/etc/Nextion_Support/Colors.ini)
-mt="$SetNum|$m5|$m1|$m2|$m3|$m4"
+
+m6=$(sed -n '/^[ \t]*\[MMDVM\]/,/\[/s/^[ \t]*SetNum[ \t]*=[ \t]*//p' "$f1")
+m7=$(sed -n '/^[ \t]*\[DMR\]/,/\[/s/^[ \t]*SetNum[ \t]*=[ \t]*//p' "$f1")
+m8=$(sed -n '/^[ \t]*\[YSF\]/,/\[/s/^[ \t]*SetNum[ \t]*=[ \t]*//p' "$f1")
+m9=$(sed -n '/^[ \t]*\[NXDN\]/,/\[/s/^[ \t]*SetNum[ \t]*=[ \t]*//p' "$f1")
+m10=$(sed -n '/^[ \t]*\[P25\]/,/\[/s/^[ \t]*SetNum[ \t]*=[ \t]*//p' "$f1")
+m11=$(sed -n '/^[ \t]*\[DSTAR\]/,/\[/s/^[ \t]*SetNum[ \t]*=[ \t]*//p' "$f1")
+
+
+
+mt="$SetNum|$m5|$m1|$m2|$m3|$m4|$m6|$m7|$m8|$m9|$m10|$m11"
 echo "$mt"

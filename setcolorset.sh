@@ -13,6 +13,12 @@ if [ -z "$3" ]; then
         exit
   else
 sudo mount -o remount,rw /
+args=("$@")
+p10=${args[10]}
+p11=${args[11]}
+p12=${args[12]}
+
+
 SetNum="$1"
 SP="$2"
 
@@ -36,6 +42,12 @@ sudo sed -i '/^\[/h;G;/ColorSet'"$1"'/s/\(LowerBack=\).*/\1'"$5"'/m;P;d'  "$cfil
 sudo sed -i '/^\[/h;G;/ColorSet'"$1"'/s/\(LowerText=\).*/\1'"$6"'/m;P;d'  "$cfile"
 sudo sed -i '/^\[/h;G;/ColorSet'"$1"'/s/\(Split=\).*/\1'"$6"'/m;P;d'  "$cfile"
 
+#sudo sed -i '/^\[/h;G;/MMDVM/s/\(SetNum=\).*/\1'"$7"'/m;P;d'  "$cfile"
+#sudo sed -i '/^\[/h;G;/DMR/s/\(SetNum=\).*/\1'"$8"'/m;P;d'  "$cfile"
+#sudo sed -i '/^\[/h;G;/YSF/s/\(SetNum=\).*/\1'"$9"'/m;P;d'  "$cfile"
+#sudo sed -i '/^\[/h;G;/NXDN/s/\(SetNum=\).*/\1'"$p10"'/m;P;d'  "$cfile"
+#sudo sed -i '/^\[/h;G;/P25/s/\(SetNum=\).*/\1'"$p11"'/m;P;d'  "$cfile"
+#sudo sed -i '/^\[/h;G;/DSTAR/s/\(SetNum=\).*/\1'"$p12"'/m;P;d'  "$cfile"
 
 
 sudo mount -o remount,ro /
