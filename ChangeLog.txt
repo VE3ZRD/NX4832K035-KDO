@@ -1,5 +1,28 @@
 
+2024-06-09
+1) Added Mode color set fields to Colorset page
+2) Added Duration and Packet Loss to Last Heard call on DMR Page
+3) New Last Heard page now shows last 8 Calls with detail if page is touched
 
+2024-05-30
+1) Moved Colors.ini and profiles.txt to /etc/ to preserve setting through an update
+
+2024-05-17
+1) Added a Net Last Heard page to show the log detail for the last logged callsign, 
+	triggered by touching the label area at the lower left side of the idle screen
+2) Changed DMR Screen to show city, state, Country in one wide label field.
+
+
+2024-05-15   Beta Version 15 May 2024 B
+1) Changed temperature rquest timing from 3 sec to 90 sec
+2) Changed Idel Screen Last Uer Location to Scrolling Text Box
+3) Removed all Location settings from flag setup page
+4) Locations now comes from pi-star through Nextion Driver
+5) Bug Fix - IP Address at the bttom of all Mode screens(My Fault)
+6) Completed code on Dash Screen to Display Power Status
+
+
+***********************************************
 Started 2024-05-15
 
 Previous to this date
@@ -21,20 +44,4 @@ Previous to this date
             git copy Beta to load new beta screen and scripts
             This dual screen option may remain a choice for some time.
 13) Modified Splash screen to show more, and better highlight Mitch EA7KDO
-
-2024-05-15   Beta Version 15 May 2024 B
-1) Changed temperature rquest timing from 3 sec to 90 sec
-2) Changed Idel Screen Last Uer Location to Scrolling Text Box
-3) Removed all Location settings from flag setup page
-4) Locations now comes from pi-star through Nextion Driver
-5) Bug Fix - IP Address at the bttom of all Mode screens(My Fault)
-6) Completed code on Dash Screen to Display Power Status
-
-2024-05-17
-1) Added a page to show the log detail for the last logged callsign, 
-	triggered by touching the label area at the lower left side of the idle screen
-2) Changed DMR Screen to show city, state, Country in one wide label field.
-
-2024-05-30
-1) Moved Colors.ini and profiles.txt to /etc/ to preserve setting through and update
 
